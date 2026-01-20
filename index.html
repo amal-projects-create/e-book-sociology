@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sociologists’ Views on Education - Mini E-Book</title>
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --glass-bg: rgba(255, 255, 255, 0.95);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.3);
+            --text-color: #2d3436;
+            /* Dark Grey for standard text */
+            --accent-color: #6c5ce7;
+            --bg-color: #dfe6e9;
+            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg-color);
+            background-image: radial-gradient(circle at 10% 20%, rgb(216, 241, 230) 0%, rgb(233, 226, 226) 90%);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-color);
+            transition: background 0.5s ease;
+            overflow-x: hidden;
+        }
+
+        .ebook-container {
+            width: 90vw;
+            max-width: 1000px;
+            min-height: 85vh;
+            height: auto;
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: var(--glass-border);
+            box-shadow: var(--shadow);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--primary-gradient);
+            width: 14%;
+            transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 0 10px rgba(118, 75, 162, 0.5);
+        }
+
+        /* Page Content */
+        .page {
+            display: none !important;
+            padding: 40px 60px;
+            flex-grow: 1;
+            overflow-y: auto;
+            animation: slideUp 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .page.active {
+            display: block !important;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Typography & Visibility Fixes */
+        body.font-large .page {
+            font-size: 1.2em;
+        }
+
+        body.font-small .page {
+            font-size: 0.9em;
+        }
+
+        /* H1: Added fallback color in case gradient clip fails */
+        h1 {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: var(--accent-color);
+            /* Fallback visibility */
+            font-size: 2.5em;
+            margin-bottom: 0.2em;
+        }
+
+        h2 {
+            color: var(--accent-color);
+            border-bottom: 2px solid rgba(108, 92, 231, 0.2);
+            padding-bottom: 15px;
+        }
+
+        /* Text: Darkened for better readability */
+        p,
+        li {
+            line-height: 1.7;
+            font-size: 1.05em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .cover-page {
+            text-align: center;
+            justify-content: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* RESTORED: Subtitle and Student Details Box */
+        .cover-subtitle {
+            font-size: 1.3em;
+            color: #555;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .student-details {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid #eee;
+            padding: 25px;
+            border-radius: 12px;
+            display: inline-block;
+            text-align: left;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Concept & Reflection Boxes */
+        .concept-box {
+            background: rgba(108, 92, 231, 0.1);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 20px 0;
+            font-style: italic;
+            color: #333;
+        }
+
+        .reflection-box {
+            background: #fff9c4;
+            border-left: 4px solid #fbc531;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            color: #444;
+        }
+
+        /* Tooltips */
+        .tooltip-term {
+            border-bottom: 2px dashed var(--accent-color);
+            color: var(--accent-color);
+            cursor: help;
+            position: relative;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .tooltip-term:hover {
+            background: rgba(108, 92, 231, 0.1);
+        }
+
+        /* Navigation Controls */
+        .nav-controls {
+            padding: 20px 50px;
+            background: rgba(255, 255, 255, 0.5);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        button {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(118, 75, 162, 0.3);
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Top Tools Bar */
+        .tools-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .tool-btn {
+            background: white;
+            color: #444;
+            border: 1px solid #ccc;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .tool-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            --bg-color: #1e1e1e;
+            --text-color: #f5f6fa;
+            --glass-bg: rgba(30, 30, 30, 0.95);
+            --glass-border: 1px solid #444;
+            background-image: none;
+        }
+
+        body.dark-mode p,
+        body.dark-mode li,
+        body.dark-mode .concept-box {
+            color: #dcdde1;
+        }
+
+        body.dark-mode .tool-btn {
+            background: #333;
+            border-color: #444;
+            color: #ccc;
+        }
+
+        body.dark-mode .reflection-box {
+            background: #4b4b3b;
+            border-left-color: #f1c40f;
+            color: #fff;
+        }
+
+        body.dark-mode .tooltip-term {
+            color: #74b9ff;
+            border-bottom-color: #74b9ff;
+        }
+
+        body.dark-mode .student-details {
+            background: #34495e;
+            border-color: #444;
+            color: #fff;
+        }
+
+        /* Quiz Styles */
+        .quiz-option {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: left;
+            transition: 0.2s;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--accent-color);
+            background: #f8f9fa;
+        }
+
+        .quiz-option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .quiz-option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        body.dark-mode .quiz-option {
+            background: #2f3640;
+            border-color: #444;
+            color: white;
+        }
+
+        /* Sidebar Notes */
+        .notes-sidebar {
+            position: absolute;
+            top: 0;
+            right: -350px;
+            width: 320px;
+            height: 100%;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid #eee;
+        }
+
+        .notes-sidebar.open {
+            right: 0;
+        }
+
+        .notes-header {
+            padding: 20px;
+            background: var(--primary-gradient);
+            color: white;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .notes-body {
+            flex-grow: 1;
+            padding: 20px;
+            background: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .notes-area {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 12px;
+            font-family: inherit;
+            resize: none;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            color: #333;
+        }
+
+        .notes-footer {
+            padding: 15px;
+            border-top: 1px solid #eee;
+            text-align: center;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .btn-small {
+            padding: 8px 15px;
+            font-size: 0.85em;
+        }
+
+        body.dark-mode .notes-sidebar {
+            background: #2c3e50;
+            border-left-color: #444;
+        }
+
+        body.dark-mode .notes-area {
+            background: #34495e;
+            color: white;
+            border-color: #444;
+        }
+
+        /* Grid Overview */
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 150;
+            display: none;
+            flex-direction: column;
+            padding: 40px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .grid-overlay.show {
+            display: flex;
+            animation: fadeIn 0.3s;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .grid-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .grid-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 8px 15px rgba(108, 92, 231, 0.2);
+        }
+
+        /* FIX: Made grid numbers darker for visibility */
+        .grid-num {
+            font-size: 2em;
+            font-weight: bold;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .grid-title {
+            font-size: 0.9em;
+            font-weight: 600;
+            color: #333;
+        }
+
+        body.dark-mode .grid-overlay {
+            background: rgba(30, 30, 30, 0.98);
+        }
+
+        body.dark-mode .grid-item {
+            background: #333;
+            border-color: #444;
+        }
+
+        body.dark-mode .grid-title {
+            color: #eee;
+        }
+
+        /* Toast & Modal */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(3px);
+        }
+
+        .modal-box {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            width: 500px;
+            max-width: 90%;
+            position: relative;
+            animation: slideUp 0.3s;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            color: #333;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5em;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #999;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        body.dark-mode .modal-box {
+            background: #2c3e50;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ebook-container">
+        <div class="tools-container">
+            <button class="tool-btn" onclick="toggleOverview()">📑 Grid View</button>
+            <button class="tool-btn" onclick="toggleTheme()">🌗 Theme</button>
+            <button class="tool-btn" onclick="adjustFont(1)">A+</button>
+            <button class="tool-btn" onclick="adjustFont(-1)">A-</button>
+            <button class="tool-btn" onclick="toggleNotes()">📝 Notes</button>
+        </div>
+        <div class="grid-overlay" id="gridOverlay">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h2>Chapter Overview</h2>
+                <button class="close-modal" onclick="toggleOverview()">✕</button>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item" onclick="jumpToPage(1)">
+                    <div class="grid-num">1</div>
+                    <div class="grid-title">Cover</div>
+                </div>
+                <div class="grid-item" onclick="jumpToPage(2)">
+                    <div class="grid-num">2</div>
+                    <div class="grid-title">Introduction</div>
+                </div>
+                <div class="grid-item" onclick="jumpToPage(3)">
+                    <div class="grid-num">3</div>
+                    <div class="grid-title">Social Control</div>
+                </div>
+                <div class="grid-item" onclick="jumpToPage(4)">
+                    <div class="grid-num">4</div>
+                    <div class="grid-title">Culture</div>
+                </div>
+                <div class="grid-item" onclick="jumpToPage(5)">
+                    <div class="grid-num">5</div>
+                    <div class="grid-title">Social Strata</div>
+                </div>
+                <div class="grid-item" onclick="jumpToPage(6)">
+                    <div class="grid-num">6</div>
+                    <div class="grid-title">State Ideology</div>
+                </div>
+                <div class="grid-item" onclick="jumpToPage(7)">
+                    <div class="grid-num">7</div>
+                    <div class="grid-title">Quiz</div>
+                </div>
+                <div class="grid-item" onclick="jumpToPage(8)">
+                    <div class="grid-num">8</div>
+                    <div class="grid-title">Reflection</div>
+                </div>
+            </div>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="page active cover-page" id="page1">
+            <h1>Sociology in Education</h1>
+            <div class="cover-subtitle">A Digital Mini E-Book on Sociologists' Views</div>
+
+            <div class="student-details">
+                <p><strong>Name:</strong> Amal Ajwad</p>
+                <p><strong>Course:</strong> Sociology in Education</p>
+                <p><strong>Topic:</strong> Sociologists’ Views on Education</p>
+                <p><strong>Date:</strong> 2025-12-04</p>
+            </div>
+
+            <p style="margin-top: 40px; color: #999; font-size: 0.9em;">Click 'Next' to begin reading</p>
+        </div>
+
+        <div class="page" id="page2">
+            <h2>Introduction: Education as a Mirror</h2>
+            <p>Education is not just about learning facts; it is a complex social institution. Sociologists view education as a <strong>"mirror of society,"</strong> reflecting the order, culture, inequalities, and power dynamics of the world we live in.</p>
+
+            <div class="concept-box">
+                "Sociologists examine what this mirror reflects—order, culture, inequality, and power."
+            </div>
+
+            <h3>In this E-Book, we explore four key perspectives:</h3>
+            <ul>
+                <li><strong>Social Control:</strong> How schools maintain order.</li>
+                <li><strong>Cultural Dissemination:</strong> How values are passed down.</li>
+                <li><strong>Social Strata & Selection:</strong> How schools sort students.</li>
+                <li><strong>State Ideology:</strong> How education serves national interests.</li>
+            </ul>
+        </div>
+
+        <div class="page" id="page3">
+            <h2>1. Social Control (Norms & Rules)</h2>
+
+            <h3>Concept Explanation</h3>
+            <p>Social control refers to the mechanisms used to regulate individual behavior to ensure social order. In education, this manifests as hidden curriculum elements that teach obedience and conformity.</p>
+
+            <h3>Key Sociological Idea</h3>
+            <p>Schools act as agencies of control, training students to become compliant workers and citizens. Those in power (employers/state) benefit most as they receive a disciplined workforce.</p>
+
+            <h3>Real-World Example</h3>
+            <ul>
+                <li><strong>The School Bell:</strong> Conditions students to adhere to strict time management, mimicking factory shifts.</li>
+                <li><strong>Uniforms:</strong> Suppress individuality to promote collective identity and order.</li>
+            </ul>
+
+            <div class="reflection-box">
+                <strong>Critical Reflection:</strong> While necessary for safety and organization, excessive control can stifle creativity and critical thinking, turning students into passive recipients rather than active learners.
+            </div>
+        </div>
+
+        <div class="page" id="page4">
+            <h2>2. Cultural Dissemination</h2>
+
+            <h3>Concept Explanation</h3>
+            <p>This is the process by which education transmits the "way of life" of a society—its history, language, and values—from one generation to the next.</p>
+
+            <h3>Key Sociological Idea</h3>
+            <p>Schools are the primary vehicle for preserving culture. However, sociologists ask: <em>Whose culture is being taught?</em> Often, it is the culture of the dominant group.</p>
+
+            <h3>Real-World Example</h3>
+            <ul>
+                <li><strong>Literature Curriculum:</strong> Selecting specific "classic" texts often prioritizes one cultural heritage while ignoring minority voices.</li>
+                <li><strong>Language Policy:</strong> The medium of instruction determines which language is viewed as "academic" or prestigious.</li>
+            </ul>
+
+            <div class="reflection-box">
+                <strong>Critical Reflection:</strong> This function builds social cohesion and shared identity, but can lead to the marginalization of students whose cultural background is not represented in the curriculum.
+            </div>
+        </div>
+
+        <div class="page" id="page5">
+            <h2>3. Social Strata & Selection</h2>
+
+            <h3>Concept Explanation</h3>
+            <p>Education acts as a sieve, sorting students into different paths (strata) based on ability and talent. This is often described as "meritocracy."</p>
+
+            <h3>Key Sociological Idea</h3>
+            <p>Functionalists argue this ensures the most capable fill the most important jobs. Critical sociologists argue it reproduces class inequality, as wealthier students often have better resources to succeed.</p>
+
+            <h3>Real-World Example</h3>
+            <ul>
+                <li><strong>Streaming/Tracking:</strong> Separating students into Science vs. Art streams often determines their future earning potential.</li>
+                <li><strong>Standardized Exams:</strong> High-stakes testing creates a "pass/fail" divide that shapes life chances.</li>
+            </ul>
+
+            <div class="reflection-box">
+                <strong>Critical Reflection:</strong> While selection is necessary for economic efficiency, it often ignores the uneven playing field, making privilege look like "intelligence."
+            </div>
+        </div>
+
+        <div class="page" id="page6">
+            <h2>4. State Ideology</h2>
+
+            <h3>Concept Explanation</h3>
+            <p>State ideology refers to the use of education to promote the political beliefs, goals, and legitimacy of the government or ruling power.</p>
+
+            <h3>Key Sociological Idea</h3>
+            <p>Schools function as "Ideological State Apparatuses" (Althusser). They instill patriotism and loyalty to the nation-state, ensuring political stability.</p>
+
+            <h3>Real-World Example</h3>
+            <ul>
+                <li><strong>Civics/History Classes:</strong> Often emphasize national victories and minimize state failures to build pride.</li>
+                <li><strong>Morning Assemblies:</strong> Singing the national anthem creates a ritualistic bond to the state.</li>
+            </ul>
+
+            <div class="reflection-box">
+                <strong>Critical Reflection:</strong> Fostering national identity is crucial for unity, but when unchecked, it can become propaganda that discourages questioning authority or government policy.
+            </div>
+        </div>
+        <div class="page" id="page_quiz">
+            <h2>Knowledge Check</h2>
+            <p>Test your understanding of the four sociological perspectives before the final reflection.</p>
+
+            <div class="quiz-container" id="q1">
+                <h3>1. Which perspective views schools as training grounds for obedience and punctuality?</h3>
+                <button class="quiz-option" onclick="checkAnswer(this, 'correct', 'q1')">Social Control</button>
+                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q1')">Cultural Dissemination</button>
+                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q1')">Social Strata</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <div class="quiz-container" id="q2">
+                <h3>2. "Streaming" students into Science vs. Arts is an example of:</h3>
+                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q2')">State Ideology</button>
+                <button class="quiz-option" onclick="checkAnswer(this, 'correct', 'q2')">Social Strata & Selection</button>
+                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q2')">Hidden Curriculum</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <div class="concept-box" style="margin-top: 20px; font-size: 0.9em;">
+                <strong>Tip:</strong> If you get a question wrong, go back and review the relevant page!
+            </div>
+        </div>
+
+        <div class="page" id="page7">
+            <h2>Personal Reflection</h2>
+            <div class="concept-box">
+                "Education is not neutral. You are learning to 'see' education through a critical sociological lens."
+            </div>
+
+            <h3>Which sociological view do you agree with most?</h3>
+            <p><em>(Placeholder for your answer)</em> I resonate most with <strong>Social Strata & Selection</strong>. It is evident in how exam results heavily dictate a student's future trajectory, often rewarding those with access to tuition and resources rather than raw potential.</p>
+
+            <h3>How has this activity changed your understanding?</h3>
+            <p><em>(Placeholder for your answer)</em> Before this, I viewed school rules simply as "discipline." Now, I see them as tools of <strong>Social Control</strong> designed to prepare us for the workforce. It has made me more critical of <em>why</em> we learn what we learn.</p>
+
+            <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
+            <p style="text-align: center; font-weight: bold; color: var(--primary-color);">THANK YOU FOR READING</p>
+        </div>
+
+        <div class="nav-controls">
+            <button id="prevBtn" onclick="changePage(-1)" disabled>Previous</button>
+            <span class="page-number">Page <span id="pageNum">1</span> of 8</span>
+            <button id="nextBtn" onclick="changePage(1)">Next</button>
+        </div>
+    </div>
+    <div class="modal-overlay" id="glossaryModal">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <h2 style="margin-top:0;">Sociological Glossary</h2>
+
+            <div class="glossary-item">
+                <div class="glossary-term">Hidden Curriculum</div>
+                <div>The unwritten, unofficial, and often unintended lessons, values, and perspectives that students learn in school (e.g., how to interact with peers, obedience).</div>
+            </div>
+
+            <div class="glossary-item">
+                <div class="glossary-term">Meritocracy</div>
+                <div>A social system where people's success and status depend primarily on their talents, abilities, and effort, rather than their wealth or class.</div>
+            </div>
+
+            <div class="glossary-item">
+                <div class="glossary-term">Social Control</div>
+                <div>The study of the mechanisms, in the form of patterns of pressure, through which society maintains social order and cohesion.</div>
+            </div>
+
+            <div class="glossary-item">
+                <div class="glossary-term">Ideological State Apparatus</div>
+                <div>A term by Louis Althusser denoting institutions such as education, the churches, family, media, etc., which serve to transmit the values of the state.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notes-sidebar" id="notesSidebar">
+        <div class="notes-header">
+            <span>Study Notes</span>
+            <span style="cursor:pointer" onclick="toggleNotes()">✕</span>
+        </div>
+        <div class="notes-body">
+            <p style="font-size:0.9em; margin-top:0; color:#888;">Notes for current page:</p>
+            <textarea class="notes-area" id="noteInput" placeholder="Type your analysis here..."></textarea>
+        </div>
+        <div class="notes-footer">
+            <button class="btn-small" onclick="saveNote()">Save</button>
+            <button class="btn-small" onclick="downloadNotes()" style="background:#555;">Export .txt</button>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">Note Saved!</div>
+
+    <script>
+        // --- CONFIGURATION ---
+        let currentPage = 1;
+        const totalPages = 8;
+        const notesStorage = JSON.parse(localStorage.getItem('socio_ebook_notes')) || {};
+        let fontSizeLevel = 0;
+
+        // Map Numbers to Page IDs
+        function getPageId(num) {
+            if (num <= 6) return `page${num}`;
+            if (num === 7) return `page_quiz`;
+            if (num === 8) return `page7`; // Historical reason for ID
+        }
+
+        // --- CORE NAVIGATION (FIXED) ---
+        function changePage(direction) {
+            if (document.getElementById('notesSidebar').classList.contains('open')) saveNote();
+
+            currentPage += direction;
+            updateView();
+        }
+
+        function jumpToPage(num) {
+            if (document.getElementById('notesSidebar').classList.contains('open')) saveNote();
+            currentPage = num;
+            toggleOverview(); // Close grid
+            updateView();
+        }
+
+        function updateView() {
+            // SAFETY: Loop through ALL pages to ensure only ONE is visible
+            for (let i = 1; i <= totalPages; i++) {
+                const pid = getPageId(i);
+                const el = document.getElementById(pid);
+                if (el) el.classList.remove('active');
+            }
+
+            // Show Current
+            const newId = getPageId(currentPage);
+            const activeEl = document.getElementById(newId);
+            if (activeEl) activeEl.classList.add('active');
+
+            // Update UI Controls
+            document.getElementById('pageNum').innerText = currentPage;
+            const percentage = (currentPage / totalPages) * 100;
+            document.getElementById('progressBar').style.width = `${percentage}%`;
+
+            document.getElementById('prevBtn').disabled = (currentPage === 1);
+            const nextBtn = document.getElementById('nextBtn');
+            nextBtn.disabled = (currentPage === totalPages);
+            nextBtn.innerText = (currentPage === totalPages) ? "Finish" : "Next";
+
+            loadNote();
+        }
+
+        // --- FEATURES ---
+        function toggleOverview() {
+            const grid = document.getElementById('gridOverlay');
+            grid.classList.toggle('show');
+        }
+
+        function adjustFont(dir) {
+            fontSizeLevel += dir;
+            document.body.classList.remove('font-small', 'font-large');
+            if (fontSizeLevel > 0) document.body.classList.add('font-large');
+            if (fontSizeLevel < 0) document.body.classList.add('font-small');
+        }
+
+        // --- QUIZ LOGIC ---
+        function checkAnswer(btn, status, qId) {
+            const container = document.getElementById(qId);
+            const feedback = container.querySelector('.quiz-feedback');
+            const options = container.querySelectorAll('.quiz-option');
+
+            options.forEach(opt => {
+                opt.disabled = true;
+                opt.style.cursor = 'default';
+                if (opt.getAttribute('onclick').includes("'correct'")) opt.classList.add('correct');
+            });
+
+            if (status === 'wrong') btn.classList.add('incorrect');
+
+            feedback.style.display = 'block';
+            feedback.innerText = (status === 'correct') ? "✅ Correct!" : "❌ Incorrect. Review the chapter.";
+            feedback.style.background = (status === 'correct') ? "#d4edda" : "#f8d7da";
+            feedback.style.color = (status === 'correct') ? "#155724" : "#721c24";
+        }
+
+        // --- NOTES SYSTEM (EXPORT ADDED) ---
+        function toggleNotes() {
+            document.getElementById('notesSidebar').classList.toggle('open');
+            loadNote();
+        }
+
+        function saveNote() {
+            const text = document.getElementById('noteInput').value;
+            notesStorage[getPageId(currentPage)] = text;
+            localStorage.setItem('socio_ebook_notes', JSON.stringify(notesStorage));
+            showToast("Note Saved!");
+        }
+
+        function loadNote() {
+            const saved = notesStorage[getPageId(currentPage)] || "";
+            document.getElementById('noteInput').value = saved;
+        }
+
+        function downloadNotes() {
+            let content = "MY SOCIOLOGY E-BOOK NOTES\n--------------------------\n";
+            for (let i = 1; i <= totalPages; i++) {
+                const pid = getPageId(i);
+                if (notesStorage[pid]) {
+                    content += `Page ${i}: ${notesStorage[pid]}\n\n`;
+                }
+            }
+            const blob = new Blob([content], {
+                type: 'text/plain'
+            });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'Sociology_Notes.txt';
+            a.click();
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+
+        // --- THEME & MODALS ---
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        function openModal() {
+            document.getElementById('glossaryModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('glossaryModal').style.display = 'none';
+        }
+        window.onclick = function(e) {
+            if (e.target == document.getElementById('glossaryModal')) closeModal();
+        }
+    </script>
+
+</body>
+
+</html>
