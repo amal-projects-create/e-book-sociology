@@ -547,6 +547,299 @@
             background: #2c3e50;
             color: white;
         }
+
+        /* =========================================
+           NEW VISUAL UPGRADES (Add to bottom of CSS)
+           ========================================= */
+
+        /* 1. Animated Background Particles */
+        .bg-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            filter: blur(50px);
+            opacity: 0.6;
+            animation: floatShape 20s infinite alternate;
+        }
+
+        .shape-1 {
+            top: -10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(108, 92, 231, 0.4);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            animation-duration: 25s;
+        }
+
+        .shape-2 {
+            bottom: -10%;
+            right: -5%;
+            width: 400px;
+            height: 400px;
+            background: rgba(116, 185, 255, 0.4);
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            animation-delay: -5s;
+        }
+
+        .shape-3 {
+            top: 40%;
+            left: 40%;
+            width: 300px;
+            height: 300px;
+            background: rgba(253, 121, 168, 0.3);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation-duration: 35s;
+        }
+
+        @keyframes floatShape {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(50px, 50px) rotate(20deg);
+            }
+        }
+
+        /* 2. Custom Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.02);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(108, 92, 231, 0.3);
+            border-radius: 5px;
+            border: 2px solid transparent;
+            background-clip: content-box;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(108, 92, 231, 0.6);
+        }
+
+        /* 3. Enhanced Card & Glass Effects */
+        .ebook-container {
+            /* Adding a subtle inner border for depth */
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.1),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+        }
+
+        .concept-box {
+            position: relative;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.05) 0%, rgba(108, 92, 231, 0.15) 100%);
+            border: none;
+            border-left: 5px solid var(--accent-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease;
+        }
+
+        .concept-box:hover {
+            transform: translateX(5px);
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1) 0%, rgba(108, 92, 231, 0.2) 100%);
+        }
+
+        .concept-box::after {
+            content: '💡';
+            position: absolute;
+            top: -15px;
+            right: -10px;
+            font-size: 1.5rem;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 4. Enhanced Typography */
+        h1 {
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.05);
+            margin-bottom: 0.5em;
+        }
+
+        h2 {
+            position: relative;
+            display: inline-block;
+            border-bottom: none;
+            margin-bottom: 30px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40%;
+            height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+            transition: width 0.3s;
+        }
+
+        .page:hover h2::after {
+            width: 100%;
+        }
+
+        p strong {
+            color: var(--accent-color);
+        }
+
+        /* 5. UI Element Polish (Tables & Lists) */
+        table {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            animation: fadeIn 1s ease;
+        }
+
+        th {
+            background: var(--primary-gradient) !important;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 0.85em;
+        }
+
+        tr {
+            transition: background 0.2s;
+        }
+
+        tr:hover td {
+            background: rgba(108, 92, 231, 0.05);
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 25px;
+            list-style: none;
+        }
+
+        ul li::before {
+            content: '➤';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-size: 0.8em;
+            top: 5px;
+        }
+
+        /* 6. ID Card Style for Student Details */
+        .student-details {
+            position: relative;
+            background: linear-gradient(120deg, #ffffff 0%, #f0f2f5 100%);
+            border: none;
+            box-shadow:
+                0 10px 20px rgba(0, 0, 0, 0.08),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: transform 0.3s;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .student-details:hover {
+            transform: translateY(-5px) rotateX(2deg);
+        }
+
+        .student-details::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--primary-gradient);
+            border-radius: 12px 0 0 12px;
+        }
+
+        /* 7. Enhanced Quiz Options */
+        .quiz-option {
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background: linear-gradient(to right, #ffffff, #f9f9f9);
+            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.05);
+            transform: translateY(0);
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .quiz-option:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 rgba(0, 0, 0, 0.05);
+            padding-left: 20px;
+        }
+
+        .quiz-option:active {
+            transform: translateY(2px);
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        }
+
+        /* 8. Tooltip & Notes Polish */
+        .tool-btn {
+            backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .tool-btn:hover {
+            background: white;
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.2);
+        }
+
+        /* Dark Mode Specific Overrides for New Elements */
+        body.dark-mode .shape {
+            opacity: 0.2;
+        }
+
+        body.dark-mode .concept-box {
+            background: rgba(108, 92, 231, 0.1);
+        }
+
+        body.dark-mode .concept-box::after {
+            background: #444;
+            color: #eee;
+        }
+
+        body.dark-mode .student-details {
+            background: linear-gradient(120deg, #2c3e50 0%, #34495e 100%);
+        }
+
+        body.dark-mode tr:hover td {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Loading Animation for Page Load */
+        @keyframes containerFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .ebook-container {
+            animation: containerFadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
     </style>
 </head>
 
@@ -554,6 +847,7 @@
 
     <div class="ebook-container">
         <div class="tools-container">
+            <button class="tool-btn" onclick="openModal()">📖 Glossary</button>
             <button class="tool-btn" onclick="toggleOverview()">📑 Grid View</button>
             <button class="tool-btn" onclick="toggleTheme()">🌗 Theme</button>
             <button class="tool-btn" onclick="adjustFont(1)">A+</button>
@@ -626,133 +920,199 @@
                 "Sociologists examine what this mirror reflects—order, culture, inequality, and power."
             </div>
 
-            <h3>In this E-Book, we explore four key perspectives:</h3>
+            <h3>The Great Debate: Consensus vs. Conflict</h3>
+            <p>Before diving into specific functions, we must understand the two main "lenses" sociologists use:</p>
+
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
+                <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.6); padding: 15px; border-radius: 8px; border-left: 3px solid #2ecc71;">
+                    <h4 style="margin-top:0; color: #27ae60;">1. Functionalism (Consensus)</h4>
+                    <p style="font-size: 0.9em;">Believes education is beneficial. It sorts people into the right jobs (Meritocracy) and teaches shared values (Social Solidarity) to keep society stable.</p>
+                </div>
+                <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.6); padding: 15px; border-radius: 8px; border-left: 3px solid #e74c3c;">
+                    <h4 style="margin-top:0; color: #c0392b;">2. Marxism (Conflict)</h4>
+                    <p style="font-size: 0.9em;">Believes education is oppressive. It reproduces class inequality, teaches obedience to authority, and validates the culture of the rich while ignoring the poor.</p>
+                </div>
+            </div>
+
+            <h3>In this E-Book, we explore 4 Key Dimensions:</h3>
             <ul>
-                <li><strong>Social Control:</strong> How schools maintain order.</li>
-                <li><strong>Cultural Dissemination:</strong> How values are passed down.</li>
-                <li><strong>Social Strata & Selection:</strong> How schools sort students.</li>
-                <li><strong>State Ideology:</strong> How education serves national interests.</li>
+                <li><strong>Social Control:</strong> Creating the "Obedient Worker."</li>
+                <li><strong>Cultural Dissemination:</strong> Whose culture counts?</li>
+                <li><strong>Social Strata:</strong> The sorting machine.</li>
+                <li><strong>State Ideology:</strong> Creating the "Loyal Citizen."</li>
             </ul>
         </div>
 
         <div class="page" id="page3">
-            <h2>1. Social Control (Norms & Rules)</h2>
+            <h2>1. Social Control & The Hidden Curriculum</h2>
 
-            <h3>Concept Explanation</h3>
-            <p>Social control refers to the mechanisms used to regulate individual behavior to ensure social order. In education, this manifests as hidden curriculum elements that teach obedience and conformity.</p>
+            <h3>The "Hidden Curriculum"</h3>
+            <p>Schools teach Math and English, but they also teach the <strong>Hidden Curriculum</strong>—lessons learned not from books, but from the structure of school itself. This includes punctuality, obedience, and accepting boredom.</p>
 
-            <h3>Key Sociological Idea</h3>
-            <p>Schools act as agencies of control, training students to become compliant workers and citizens. Those in power (employers/state) benefit most as they receive a disciplined workforce.</p>
+            <h3>The Correspondence Principle (Bowles & Gintis)</h3>
+            <p>Marxists Bowles and Gintis (1976) argue that schools are designed to mirror the factory floor. They call this the <strong>Correspondence Principle</strong>.</p>
 
-            <h3>Real-World Example</h3>
-            <ul>
-                <li><strong>The School Bell:</strong> Conditions students to adhere to strict time management, mimicking factory shifts.</li>
-                <li><strong>Uniforms:</strong> Suppress individuality to promote collective identity and order.</li>
-            </ul>
+            <table style="width:100%; border-collapse: collapse; margin: 20px 0; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                <thead>
+                    <tr style="background: var(--primary-gradient); color: white;">
+                        <th style="padding:12px; text-align: left;">School Feature</th>
+                        <th style="padding:12px; text-align: left;">Workplace Feature</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding:12px;"><strong>The Bell:</strong> Rigid time structures.</td>
+                        <td style="padding:12px;"><strong>The Shift:</strong> Clocking in/out.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding:12px;"><strong>The Teacher:</strong> Absolute authority.</td>
+                        <td style="padding:12px;"><strong>The Boss:</strong> Hierarchy & Management.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding:12px;"><strong>Grades:</strong> External motivation.</td>
+                        <td style="padding:12px;"><strong>Wages:</strong> Working for pay, not passion.</td>
+                    </tr>
+                </tbody>
+            </table>
 
             <div class="reflection-box">
-                <strong>Critical Reflection:</strong> While necessary for safety and organization, excessive control can stifle creativity and critical thinking, turning students into passive recipients rather than active learners.
+                <strong>Discussion Point:</strong> Think about your own schooling. Were you rewarded for being <em>creative</em> or for being <em>compliant</em>?
             </div>
         </div>
 
         <div class="page" id="page4">
-            <h2>2. Cultural Dissemination</h2>
+            <h2>2. Cultural Dissemination & Capital</h2>
 
-            <h3>Concept Explanation</h3>
-            <p>This is the process by which education transmits the "way of life" of a society—its history, language, and values—from one generation to the next.</p>
+            <h3>The Concept of "Habitus"</h3>
+            <p>Pierre Bourdieu used the term <strong>Habitus</strong> to describe the habits, skills, and dispositions we acquire from our family. He argued that the education system values the Habitus of the middle class while devaluing the working class.</p>
 
-            <h3>Key Sociological Idea</h3>
-            <p>Schools are the primary vehicle for preserving culture. However, sociologists ask: <em>Whose culture is being taught?</em> Often, it is the culture of the dominant group.</p>
+            <h3>Cultural Capital</h3>
+            <p>Just as you can have economic capital (money), you can have <strong>Cultural Capital</strong> (knowledge of art, literature, complex vocabulary). Schools reward students who possess this capital.</p>
 
-            <h3>Real-World Example</h3>
-            <ul>
-                <li><strong>Literature Curriculum:</strong> Selecting specific "classic" texts often prioritizes one cultural heritage while ignoring minority voices.</li>
-                <li><strong>Language Policy:</strong> The medium of instruction determines which language is viewed as "academic" or prestigious.</li>
-            </ul>
+            <div class="concept-box" style="border-left-color: #e84393; background: rgba(232, 67, 147, 0.1);">
+                <strong>Basil Bernstein’s Language Codes:</strong><br>
+                1. <em>Restricted Code:</em> Short, context-dependent speech (often Working Class).<br>
+                2. <em>Elaborated Code:</em> Complex, detailed speech (Middle Class & Teachers).
+            </div>
+
+            <p>Because textbooks and exams use the <strong>Elaborated Code</strong>, working-class students effectively have to learn a second language to succeed, putting them at a disadvantage.</p>
 
             <div class="reflection-box">
-                <strong>Critical Reflection:</strong> This function builds social cohesion and shared identity, but can lead to the marginalization of students whose cultural background is not represented in the curriculum.
+                <strong>Critical Question:</strong> Is the curriculum "neutral"? Why do we study Shakespeare but rarely study Rap lyrics, even though both are forms of complex poetry?
             </div>
         </div>
 
         <div class="page" id="page5">
             <h2>3. Social Strata & Selection</h2>
 
-            <h3>Concept Explanation</h3>
-            <p>Education acts as a sieve, sorting students into different paths (strata) based on ability and talent. This is often described as "meritocracy."</p>
+            <h3>The Myth of Meritocracy?</h3>
+            <p>Functionalists like Davis and Moore believe schools act as a sieve, sorting the most talented individuals into the most important roles. This is <strong>Role Allocation</strong>.</p>
 
-            <h3>Key Sociological Idea</h3>
-            <p>Functionalists argue this ensures the most capable fill the most important jobs. Critical sociologists argue it reproduces class inequality, as wealthier students often have better resources to succeed.</p>
+            <p> However, statistics often show that class background predicts success more than raw intelligence. This suggests <strong>Meritocracy</strong> (rule by merit) might be a myth.</p>
 
-            <h3>Real-World Example</h3>
+            <h3>Teacher Labeling (The Self-Fulfilling Prophecy)</h3>
+            <p>Sociologist Howard Becker found that teachers often judge students not on ability, but on how closely they fit the image of the "Ideal Pupil" (typically middle-class, quiet, tidy).</p>
+
             <ul>
-                <li><strong>Streaming/Tracking:</strong> Separating students into Science vs. Art streams often determines their future earning potential.</li>
-                <li><strong>Standardized Exams:</strong> High-stakes testing creates a "pass/fail" divide that shapes life chances.</li>
+                <li><strong>Step 1:</strong> Teacher labels student as "troublemaker."</li>
+                <li><strong>Step 2:</strong> Teacher treats student with suspicion.</li>
+                <li><strong>Step 3:</strong> Student internalizes the label and acts out.</li>
+                <li><strong>Step 4:</strong> Failure confirms the teacher's original belief.</li>
             </ul>
 
             <div class="reflection-box">
-                <strong>Critical Reflection:</strong> While selection is necessary for economic efficiency, it often ignores the uneven playing field, making privilege look like "intelligence."
+                <strong>Case Study: Paul Willis - "Learning to Labour"</strong><br>
+                Willis studied a group of working-class "lads" who rejected school values. They saw through the meritocracy myth, realizing they were destined for manual labor, so they chose to have "a laugh" instead of studying.
             </div>
         </div>
 
         <div class="page" id="page6">
-            <h2>4. State Ideology</h2>
+            <h2>4. State Ideology & Power</h2>
 
-            <h3>Concept Explanation</h3>
-            <p>State ideology refers to the use of education to promote the political beliefs, goals, and legitimacy of the government or ruling power.</p>
+            <h3>Althusser: The Ideological State Apparatus</h3>
+            <p>Louis Althusser (1971) argued the state has two ways to keep control:</p>
+            <ol>
+                <li><strong>Repressive State Apparatus (RSA):</strong> Police, Army (Force).</li>
+                <li><strong>Ideological State Apparatus (ISA):</strong> Religion, Media, <em>Education</em> (Mind Control).</li>
+            </ol>
+            <p>Education is the most powerful ISA because it influences virtually every child for years, ensuring they accept the political system without question.</p>
 
-            <h3>Key Sociological Idea</h3>
-            <p>Schools function as "Ideological State Apparatuses" (Althusser). They instill patriotism and loyalty to the nation-state, ensuring political stability.</p>
+            <h3>Globalization & PISA</h3>
+            <p>In the modern world, state ideology has shifted towards <strong>Neoliberalism</strong>—treating schools like businesses. Governments obsess over PISA rankings (international test comparisons), often narrowing the curriculum to Math and Science to compete globally, while cutting Arts and Humanities.</p>
 
-            <h3>Real-World Example</h3>
-            <ul>
-                <li><strong>Civics/History Classes:</strong> Often emphasize national victories and minimize state failures to build pride.</li>
-                <li><strong>Morning Assemblies:</strong> Singing the national anthem creates a ritualistic bond to the state.</li>
-            </ul>
-
-            <div class="reflection-box">
-                <strong>Critical Reflection:</strong> Fostering national identity is crucial for unity, but when unchecked, it can become propaganda that discourages questioning authority or government policy.
+            <div class="concept-box">
+                "History classes are often used to build a sense of national identity, sometimes glossing over the darker parts of a nation's past."
             </div>
         </div>
+
         <div class="page" id="page_quiz">
             <h2>Knowledge Check</h2>
-            <p>Test your understanding of the four sociological perspectives before the final reflection.</p>
+            <p>Test your understanding of the four sociological perspectives.</p>
 
             <div class="quiz-container" id="q1">
-                <h3>1. Which perspective views schools as training grounds for obedience and punctuality?</h3>
-                <button class="quiz-option" onclick="checkAnswer(this, 'correct', 'q1')">Social Control</button>
-                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q1')">Cultural Dissemination</button>
-                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q1')">Social Strata</button>
+                <h3>1. Which sociologist discussed the "Correspondence Principle"?</h3>
+                <button class="quiz-option" onclick="checkAnswer(this, 'correct', 'q1')">Bowles & Gintis</button>
+                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q1')">Émile Durkheim</button>
+                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q1')">Talcott Parsons</button>
                 <div class="quiz-feedback"></div>
             </div>
 
             <div class="quiz-container" id="q2">
-                <h3>2. "Streaming" students into Science vs. Arts is an example of:</h3>
-                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q2')">State Ideology</button>
-                <button class="quiz-option" onclick="checkAnswer(this, 'correct', 'q2')">Social Strata & Selection</button>
-                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q2')">Hidden Curriculum</button>
+                <h3>2. What is "Cultural Capital"?</h3>
+                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q2')">Money used to build schools.</button>
+                <button class="quiz-option" onclick="checkAnswer(this, 'correct', 'q2')">Knowledge/tastes that give social advantage.</button>
+                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q2')">The capital city of a country.</button>
                 <div class="quiz-feedback"></div>
             </div>
 
-            <div class="concept-box" style="margin-top: 20px; font-size: 0.9em;">
-                <strong>Tip:</strong> If you get a question wrong, go back and review the relevant page!
+            <div class="quiz-container" id="q3">
+                <h3>3. According to Becker, how does "Labeling" affect students?</h3>
+                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q3')">It motivates them to prove teachers wrong.</button>
+                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q3')">It has no effect on grades.</button>
+                <button class="quiz-option" onclick="checkAnswer(this, 'correct', 'q3')">It creates a Self-Fulfilling Prophecy.</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <div class="quiz-container" id="q4">
+                <h3>4. What does Althusser call the education system?</h3>
+                <button class="quiz-option" onclick="checkAnswer(this, 'correct', 'q4')">Ideological State Apparatus (ISA)</button>
+                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q4')">Repressive State Apparatus (RSA)</button>
+                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q4')">The Hidden Curriculum</button>
+                <div class="quiz-feedback"></div>
             </div>
         </div>
 
-        <div class="page" id="page7">
+        <div class="page" id="page_reflection">
             <h2>Personal Reflection</h2>
+
             <div class="concept-box">
                 "Education is not neutral. You are learning to 'see' education through a critical sociological lens."
             </div>
 
-            <h3>Which sociological view do you agree with most?</h3>
-            <p>I resonate most with <strong>Social Strata & Selection</strong>. It is evident in how exam results heavily dictate a student's future trajectory, often rewarding those with access to tuition and resources rather than raw potential.</p>
+            <h3>Which perspective do you align with?</h3>
+            <p>Having reviewed the materials, consider the following:</p>
 
-            <h3>How has this activity changed your understanding?</h3>
-            <p><Before this, I viewed school rules simply as "discipline." Now, I see them as tools of <strong>Social Control</strong> designed to prepare us for the workforce. It has made me more critical of <em>why</em> we learn what we learn.</p>
+            <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                <p><strong>Do you agree with Functionalism?</strong><br>
+                    <em>"Schools are fair ladders. If I work hard, I will climb."</em>
+                </p>
+                <hr style="border: 0; border-top: 1px solid #eee;">
+                <p><strong>Do you agree with Conflict Theory?</strong><br>
+                    <em>"Schools are rigged games. The ladder is broken for the poor."</em>
+                </p>
+            </div>
 
-            <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
-            <p style="text-align: center; font-weight: bold; color: var(--primary-color);">THANK YOU FOR READING</p>
+            <h3>Final Task</h3>
+            <p>Use the <strong>"Notes"</strong> feature (top right) to write a summary of how your view of school has changed after reading this e-book. You can then download it as a text file.</p>
+
+            <div class="reflection-box" style="background: #e0f2f1; border-left-color: #009688;">
+                <strong>Thank You!</strong><br>
+                You have completed the module on Sociological Perspectives in Education.
+            </div>
+
+            <div style="text-align: center; margin-top: 40px; opacity: 0.6;">
+                <p>Designed by Amal Ajwad | 2025</p>
+            </div>
         </div>
 
         <div class="nav-controls">
@@ -812,42 +1172,54 @@
         const notesStorage = JSON.parse(localStorage.getItem('socio_ebook_notes')) || {};
         let fontSizeLevel = 0;
 
-        // Map Numbers to Page IDs
+        // Fixed ID Mapping
         function getPageId(num) {
-            if (num <= 6) return `page${num}`;
-            if (num === 7) return `page_quiz`;
-            if (num === 8) return `page7`; // Historical reason for ID
+            if (num === 1) return 'page1'; // Cover
+            if (num === 2) return 'page2'; // Intro
+            if (num === 3) return 'page3'; // Control
+            if (num === 4) return 'page4'; // Culture
+            if (num === 5) return 'page5'; // Strata
+            if (num === 6) return 'page6'; // State
+            if (num === 7) return 'page_quiz'; // Quiz
+            if (num === 8) return 'page_reflection'; // Reflection (Renamed for clarity)
         }
 
-        // --- CORE NAVIGATION (FIXED) ---
+        // --- CORE NAVIGATION ---
         function changePage(direction) {
             if (document.getElementById('notesSidebar').classList.contains('open')) saveNote();
 
-            currentPage += direction;
+            // Boundary Checks
+            const next = currentPage + direction;
+            if (next < 1 || next > totalPages) return;
+
+            currentPage = next;
             updateView();
+            window.scrollTo(0, 0); // Scroll to top on page change
         }
 
         function jumpToPage(num) {
             if (document.getElementById('notesSidebar').classList.contains('open')) saveNote();
             currentPage = num;
-            toggleOverview(); // Close grid
+            toggleOverview();
             updateView();
+            window.scrollTo(0, 0);
         }
 
         function updateView() {
-            // SAFETY: Loop through ALL pages to ensure only ONE is visible
-            for (let i = 1; i <= totalPages; i++) {
-                const pid = getPageId(i);
-                const el = document.getElementById(pid);
-                if (el) el.classList.remove('active');
-            }
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(p => p.classList.remove('active'));
 
             // Show Current
             const newId = getPageId(currentPage);
             const activeEl = document.getElementById(newId);
-            if (activeEl) activeEl.classList.add('active');
+            if (activeEl) {
+                activeEl.classList.add('active');
+            } else {
+                console.error("Missing Page ID:", newId); // Debugging aid
+            }
 
-            // Update UI Controls
+            // Update UI
             document.getElementById('pageNum').innerText = currentPage;
             const percentage = (currentPage / totalPages) * 100;
             document.getElementById('progressBar').style.width = `${percentage}%`;
@@ -860,10 +1232,56 @@
             loadNote();
         }
 
-        // --- FEATURES ---
+        // --- QUIZ LOGIC (Enhanced) ---
+        function checkAnswer(btn, status, qId) {
+            const container = document.getElementById(qId);
+            const feedback = container.querySelector('.quiz-feedback');
+            const options = container.querySelectorAll('.quiz-option');
+
+            // Lock options
+            options.forEach(opt => {
+                opt.disabled = true;
+                opt.style.cursor = 'default';
+                // Highlight the correct answer even if they picked wrong
+                if (opt.getAttribute('onclick').includes("'correct'")) {
+                    opt.style.border = "2px solid #28a745";
+                    opt.style.background = "#d4edda";
+                    opt.style.color = "#155724";
+                }
+            });
+
+            if (status === 'wrong') {
+                btn.style.background = "#f8d7da";
+                btn.style.borderColor = "#dc3545";
+                btn.style.color = "#721c24";
+            }
+
+            feedback.style.display = 'block';
+            feedback.innerHTML = (status === 'correct') ?
+                "<strong>✅ Correct!</strong> Well done." :
+                "<strong>❌ Incorrect.</strong> Review the theory box above.";
+
+            feedback.style.marginTop = "15px";
+            feedback.style.padding = "10px";
+            feedback.style.borderRadius = "5px";
+            feedback.style.background = (status === 'correct') ? "rgba(40, 167, 69, 0.1)" : "rgba(220, 53, 69, 0.1)";
+        }
+
+        // --- UTILS ---
         function toggleOverview() {
-            const grid = document.getElementById('gridOverlay');
-            grid.classList.toggle('show');
+            document.getElementById('gridOverlay').classList.toggle('show');
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        function openModal() {
+            document.getElementById('glossaryModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('glossaryModal').style.display = 'none';
         }
 
         function adjustFont(dir) {
@@ -873,27 +1291,7 @@
             if (fontSizeLevel < 0) document.body.classList.add('font-small');
         }
 
-        // --- QUIZ LOGIC ---
-        function checkAnswer(btn, status, qId) {
-            const container = document.getElementById(qId);
-            const feedback = container.querySelector('.quiz-feedback');
-            const options = container.querySelectorAll('.quiz-option');
-
-            options.forEach(opt => {
-                opt.disabled = true;
-                opt.style.cursor = 'default';
-                if (opt.getAttribute('onclick').includes("'correct'")) opt.classList.add('correct');
-            });
-
-            if (status === 'wrong') btn.classList.add('incorrect');
-
-            feedback.style.display = 'block';
-            feedback.innerText = (status === 'correct') ? "✅ Correct!" : "❌ Incorrect. Review the chapter.";
-            feedback.style.background = (status === 'correct') ? "#d4edda" : "#f8d7da";
-            feedback.style.color = (status === 'correct') ? "#155724" : "#721c24";
-        }
-
-        // --- NOTES SYSTEM (EXPORT ADDED) ---
+        // --- NOTES SYSTEM ---
         function toggleNotes() {
             document.getElementById('notesSidebar').classList.toggle('open');
             loadNote();
@@ -912,11 +1310,11 @@
         }
 
         function downloadNotes() {
-            let content = "MY SOCIOLOGY E-BOOK NOTES\n--------------------------\n";
+            let content = "MY SOCIOLOGY NOTES\n==================\n\n";
             for (let i = 1; i <= totalPages; i++) {
                 const pid = getPageId(i);
                 if (notesStorage[pid]) {
-                    content += `Page ${i}: ${notesStorage[pid]}\n\n`;
+                    content += `[Page ${i}]: ${notesStorage[pid]}\n------------------\n`;
                 }
             }
             const blob = new Blob([content], {
@@ -935,18 +1333,7 @@
             setTimeout(() => toast.classList.remove('show'), 2000);
         }
 
-        // --- THEME & MODALS ---
-        function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
-        }
-
-        function openModal() {
-            document.getElementById('glossaryModal').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('glossaryModal').style.display = 'none';
-        }
+        // Close modal on outside click
         window.onclick = function(e) {
             if (e.target == document.getElementById('glossaryModal')) closeModal();
         }
