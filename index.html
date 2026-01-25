@@ -1014,6 +1014,132 @@
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid #444;
         }
+
+
+        /* =========================================
+   MOBILE RESPONSIVENESS FIXES
+   ========================================= */
+
+        @media (max-width: 768px) {
+
+            /* 1. Make the book fill the whole screen on mobile */
+            .ebook-container {
+                width: 100%;
+                max-width: 100%;
+                min-height: 100vh;
+                /* Fill full height */
+                border-radius: 0;
+                /* Remove rounded corners */
+                border: none;
+                /* Remove border */
+                box-shadow: none;
+            }
+
+            /* 2. Shrink the huge padding around text */
+            .page {
+                padding: 80px 20px 100px 20px !important;
+                /* Top, Right, Bottom, Left */
+            }
+
+            /* 3. Fix the Title size */
+            h1 {
+                font-size: 1.8em;
+                /* Smaller title */
+                margin-top: 20px;
+            }
+
+            /* 4. Fix the Tools Menu (Top Right buttons) */
+            .tools-container {
+                position: relative;
+                /* Stop floating on top of text */
+                top: 0;
+                right: 0;
+                width: 100%;
+                justify-content: center;
+                /* Center buttons */
+                padding: 10px 0;
+                background: rgba(255, 255, 255, 0.5);
+                margin-bottom: 10px;
+            }
+
+            .tool-btn {
+                font-size: 0.75em;
+                /* Smaller text */
+                padding: 5px 10px;
+                /* Smaller buttons */
+            }
+
+            /* 5. Fix Navigation Buttons (Next/Prev) */
+            .nav-controls {
+                padding: 15px;
+                flex-direction: column;
+                /* Stack them vertically */
+                gap: 15px;
+                position: fixed;
+                /* Stick to bottom */
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                box-sizing: border-box;
+                /* Include padding in width */
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                border-top: 1px solid #ccc;
+                z-index: 500;
+            }
+
+            /* Hide the page number on mobile to save space, or style it simpler */
+            .page-number {
+                font-size: 0.9em;
+                order: -1;
+                /* Move page number to top of stack */
+                margin-bottom: 5px;
+            }
+
+            button {
+                width: 100%;
+                /* Full width buttons for easy tapping */
+                padding: 15px;
+                /* Fat finger friendly */
+            }
+
+            /* 6. Debate Cards (Intro Page) Stack Vertically */
+            .debate-container {
+                flex-direction: column;
+            }
+
+            .debate-card {
+                min-width: 100%;
+                /* Full width cards */
+            }
+
+            /* 7. Student Details Box */
+            .student-details {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            /* 8. Notes Sidebar - Full Screen on Mobile */
+            .notes-sidebar {
+                width: 100%;
+                right: -100%;
+                /* Hide completely off-screen */
+            }
+
+            .notes-sidebar.open {
+                right: 0;
+            }
+
+            /* 9. Fix Dark Mode backgrounds on mobile */
+            body.dark-mode .nav-controls {
+                background: rgba(30, 30, 30, 0.95);
+                border-top-color: #444;
+            }
+
+            body.dark-mode .tools-container {
+                background: rgba(30, 30, 30, 0.5);
+            }
+        }
     </style>
 </head>
 
@@ -1086,7 +1212,7 @@
                 <p><strong>Name:</strong> Amal Ajwad</p>
                 <p><strong>Course:</strong> Sociology in Education</p>
                 <p><strong>Topic:</strong> Sociologists’ Views on Education</p>
-                <p><strong>Date:</strong> 20/01/2026</p>
+                <p><strong>Date:</strong> 20/01/2025</p>
             </div>
 
             <p style="margin-top: 40px; color: #999; font-size: 0.9em;">Click 'Next' to begin reading</p>
@@ -1153,381 +1279,381 @@
                             <td style="padding:12px;"><strong>Grades:</strong> External motivation.</td>
                             <td style="padding:12px;"><strong>Wages:</strong> Working for pay, not passion.</td>
                         </tr>
-                   </tbody>
-            </table>
+                    </tbody>
+                </table>
             </div>
 
-                <div class="reflection-box">
-                    <strong>Discussion Point:</strong> Think about your own schooling. Were you rewarded for being <em>creative</em> or for being <em>compliant</em>?
-                </div>
-            </div>
-
-            <div class="page" id="page4">
-                <h2>2. Cultural Dissemination & Capital</h2>
-
-                <h3>The Concept of "Habitus"</h3>
-                <p>Pierre Bourdieu used the term <strong>Habitus</strong> to describe the habits, skills, and dispositions we acquire from our family. He argued that the education system values the Habitus of the middle class while devaluing the working class.</p>
-
-                <h3>Cultural Capital</h3>
-                <p>Just as you can have economic capital (money), you can have <strong>Cultural Capital</strong> (knowledge of art, literature, complex vocabulary). Schools reward students who possess this capital.</p>
-
-                <div class="concept-box" style="border-left-color: #e84393; background: rgba(232, 67, 147, 0.1);">
-                    <strong>Basil Bernstein’s Language Codes:</strong><br>
-                    1. <em>Restricted Code:</em> Short, context-dependent speech (often Working Class).<br>
-                    2. <em>Elaborated Code:</em> Complex, detailed speech (Middle Class & Teachers).
-                </div>
-
-                <p>Because textbooks and exams use the <strong>Elaborated Code</strong>, working-class students effectively have to learn a second language to succeed, putting them at a disadvantage.</p>
-
-                <div class="reflection-box">
-                    <strong>Critical Question:</strong> Is the curriculum "neutral"? Why do we study Shakespeare but rarely study Rap lyrics, even though both are forms of complex poetry?
-                </div>
-            </div>
-
-            <div class="page" id="page5">
-                <h2>3. Social Strata & Selection</h2>
-
-                <h3>The Myth of Meritocracy?</h3>
-                <p>Functionalists like Davis and Moore believe schools act as a sieve, sorting the most talented individuals into the most important roles. This is <strong>Role Allocation</strong>.</p>
-
-                <p> However, statistics often show that class background predicts success more than raw intelligence. This suggests <strong>Meritocracy</strong> (rule by merit) might be a myth.</p>
-
-                <h3>Teacher Labeling (The Self-Fulfilling Prophecy)</h3>
-                <p>Sociologist Howard Becker found that teachers often judge students not on ability, but on how closely they fit the image of the "Ideal Pupil" (typically middle-class, quiet, tidy).</p>
-
-                <ul>
-                    <li><strong>Step 1:</strong> Teacher labels student as "troublemaker."</li>
-                    <li><strong>Step 2:</strong> Teacher treats student with suspicion.</li>
-                    <li><strong>Step 3:</strong> Student internalizes the label and acts out.</li>
-                    <li><strong>Step 4:</strong> Failure confirms the teacher's original belief.</li>
-                </ul>
-
-                <div class="reflection-box">
-                    <strong>Case Study: Paul Willis - "Learning to Labour"</strong><br>
-                    Willis studied a group of working-class "lads" who rejected school values. They saw through the meritocracy myth, realizing they were destined for manual labor, so they chose to have "a laugh" instead of studying.
-                </div>
-            </div>
-
-            <div class="page" id="page6">
-                <h2>4. State Ideology & Power</h2>
-
-                <h3>Althusser: The Ideological State Apparatus</h3>
-                <p>Louis Althusser (1971) argued the state has two ways to keep control:</p>
-                <ol>
-                    <li><strong>Repressive State Apparatus (RSA):</strong> Police, Army (Force).</li>
-                    <li><strong>Ideological State Apparatus (ISA):</strong> Religion, Media, <em>Education</em> (Mind Control).</li>
-                </ol>
-                <p>Education is the most powerful ISA because it influences virtually every child for years, ensuring they accept the political system without question.</p>
-
-                <h3>Globalization & PISA</h3>
-                <p>In the modern world, state ideology has shifted towards <strong>Neoliberalism</strong>—treating schools like businesses. Governments obsess over PISA rankings (international test comparisons), often narrowing the curriculum to Math and Science to compete globally, while cutting Arts and Humanities.</p>
-
-                <div class="concept-box">
-                    "History classes are often used to build a sense of national identity, sometimes glossing over the darker parts of a nation's past."
-                </div>
-            </div>
-
-            <div class="page" id="page_quiz">
-                <h2>Knowledge Check</h2>
-                <p>Test your understanding of the four sociological perspectives.</p>
-
-                <div class="quiz-container" id="q1">
-                    <h3>1. Which sociologist discussed the "Correspondence Principle"?</h3>
-                    <button class="quiz-option" onclick="checkAnswer(this, 'correct', 'q1')">Bowles & Gintis</button>
-                    <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q1')">Émile Durkheim</button>
-                    <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q1')">Talcott Parsons</button>
-                    <div class="quiz-feedback"></div>
-                </div>
-
-                <div class="quiz-container" id="q2">
-                    <h3>2. What is "Cultural Capital"?</h3>
-                    <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q2')">Money used to build schools.</button>
-                    <button class="quiz-option" onclick="checkAnswer(this, 'correct', 'q2')">Knowledge/tastes that give social advantage.</button>
-                    <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q2')">The capital city of a country.</button>
-                    <div class="quiz-feedback"></div>
-                </div>
-
-                <div class="quiz-container" id="q3">
-                    <h3>3. According to Becker, how does "Labeling" affect students?</h3>
-                    <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q3')">It motivates them to prove teachers wrong.</button>
-                    <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q3')">It has no effect on grades.</button>
-                    <button class="quiz-option" onclick="checkAnswer(this, 'correct', 'q3')">It creates a Self-Fulfilling Prophecy.</button>
-                    <div class="quiz-feedback"></div>
-                </div>
-
-                <div class="quiz-container" id="q4">
-                    <h3>4. What does Althusser call the education system?</h3>
-                    <button class="quiz-option" onclick="checkAnswer(this, 'correct', 'q4')">Ideological State Apparatus (ISA)</button>
-                    <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q4')">Repressive State Apparatus (RSA)</button>
-                    <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q4')">The Hidden Curriculum</button>
-                    <div class="quiz-feedback"></div>
-                </div>
-            </div>
-
-            <div class="page" id="page_reflection">
-                <h2>Personal Reflection</h2>
-
-                <div class="concept-box">
-                    "Education is not neutral. You are learning to 'see' education through a critical sociological lens."
-                </div>
-
-                <h3>Which perspective do you align with?</h3>
-                <p>Having reviewed the materials, consider the following:</p>
-
-                <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                    <p><strong>Do you agree with Functionalism?</strong><br>
-                        <em>"Schools are fair ladders. If I work hard, I will climb."</em>
-                    </p>
-                    <hr style="border: 0; border-top: 1px solid #eee;">
-                    <p><strong>Do you agree with Conflict Theory?</strong><br>
-                        <em>"Schools are rigged games. The ladder is broken for the poor."</em>
-                    </p>
-                </div>
-
-                <h3>Final Task</h3>
-                <p>Use the <strong>"Notes"</strong> feature (top right) to write a summary of how your view of school has changed after reading this e-book. You can then download it as a text file.</p>
-
-                <div class="reflection-box" style="background: #e0f2f1; border-left-color: #009688;">
-                    <strong>Thank You!</strong><br>
-                    You have completed the module on Sociological Perspectives in Education.
-                </div>
-
-                <div style="text-align: center; margin-top: 40px; opacity: 0.6;">
-                    <p>Designed by Amal Ajwad | 2026</p>
-                </div>
-            </div>
-
-            <div class="nav-controls">
-                <button id="prevBtn" onclick="changePage(-1)" disabled>Previous</button>
-                <span class="page-number">Page <span id="pageNum">1</span> of 8</span>
-                <button id="nextBtn" onclick="changePage(1)">Next</button>
-            </div>
-        </div>
-        <div class="modal-overlay" id="glossaryModal">
-            <div class="modal-box">
-                <button class="close-modal" onclick="closeModal()">&times;</button>
-                <h2 style="margin-top:0;">Sociological Glossary</h2>
-
-                <div class="glossary-item">
-                    <div class="glossary-term">Hidden Curriculum</div>
-                    <div>The unwritten, unofficial, and often unintended lessons, values, and perspectives that students learn in school (e.g., how to interact with peers, obedience).</div>
-                </div>
-
-                <div class="glossary-item">
-                    <div class="glossary-term">Meritocracy</div>
-                    <div>A social system where people's success and status depend primarily on their talents, abilities, and effort, rather than their wealth or class.</div>
-                </div>
-
-                <div class="glossary-item">
-                    <div class="glossary-term">Social Control</div>
-                    <div>The study of the mechanisms, in the form of patterns of pressure, through which society maintains social order and cohesion.</div>
-                </div>
-
-                <div class="glossary-item">
-                    <div class="glossary-term">Ideological State Apparatus</div>
-                    <div>A term by Louis Althusser denoting institutions such as education, the churches, family, media, etc., which serve to transmit the values of the state.</div>
-                </div>
+            <div class="reflection-box">
+                <strong>Discussion Point:</strong> Think about your own schooling. Were you rewarded for being <em>creative</em> or for being <em>compliant</em>?
             </div>
         </div>
 
-        <div class="notes-sidebar" id="notesSidebar">
-            <div class="notes-header">
-                <span>Study Notes</span>
-                <span style="cursor:pointer" onclick="toggleNotes()">✕</span>
+        <div class="page" id="page4">
+            <h2>2. Cultural Dissemination & Capital</h2>
+
+            <h3>The Concept of "Habitus"</h3>
+            <p>Pierre Bourdieu used the term <strong>Habitus</strong> to describe the habits, skills, and dispositions we acquire from our family. He argued that the education system values the Habitus of the middle class while devaluing the working class.</p>
+
+            <h3>Cultural Capital</h3>
+            <p>Just as you can have economic capital (money), you can have <strong>Cultural Capital</strong> (knowledge of art, literature, complex vocabulary). Schools reward students who possess this capital.</p>
+
+            <div class="concept-box" style="border-left-color: #e84393; background: rgba(232, 67, 147, 0.1);">
+                <strong>Basil Bernstein’s Language Codes:</strong><br>
+                1. <em>Restricted Code:</em> Short, context-dependent speech (often Working Class).<br>
+                2. <em>Elaborated Code:</em> Complex, detailed speech (Middle Class & Teachers).
             </div>
-            <div class="notes-body">
-                <p style="font-size:0.9em; margin-top:0; color:#888;">Notes for current page:</p>
-                <textarea class="notes-area" id="noteInput" placeholder="Type your analysis here..."></textarea>
-            </div>
-            <div class="notes-footer">
-                <button class="btn-small" onclick="saveNote()">Save</button>
-                <button class="btn-small" onclick="downloadNotes()" style="background:#555;">Export .txt</button>
+
+            <p>Because textbooks and exams use the <strong>Elaborated Code</strong>, working-class students effectively have to learn a second language to succeed, putting them at a disadvantage.</p>
+
+            <div class="reflection-box">
+                <strong>Critical Question:</strong> Is the curriculum "neutral"? Why do we study Shakespeare but rarely study Rap lyrics, even though both are forms of complex poetry?
             </div>
         </div>
 
-        <div class="toast" id="toast">Note Saved!</div>
+        <div class="page" id="page5">
+            <h2>3. Social Strata & Selection</h2>
 
-        <script>
-            // --- CONFIGURATION ---
-            let currentPage = 1;
-            const totalPages = 8;
-            const notesStorage = JSON.parse(localStorage.getItem('socio_ebook_notes')) || {};
-            let currentFontScale = 1.0;
+            <h3>The Myth of Meritocracy?</h3>
+            <p>Functionalists like Davis and Moore believe schools act as a sieve, sorting the most talented individuals into the most important roles. This is <strong>Role Allocation</strong>.</p>
 
-            // Fixed ID Mapping
-            function getPageId(num) {
-                if (num === 1) return 'page1'; // Cover
-                if (num === 2) return 'page2'; // Intro
-                if (num === 3) return 'page3'; // Control
-                if (num === 4) return 'page4'; // Culture
-                if (num === 5) return 'page5'; // Strata
-                if (num === 6) return 'page6'; // State
-                if (num === 7) return 'page_quiz'; // Quiz
-                if (num === 8) return 'page_reflection'; // Reflection (Renamed for clarity)
+            <p> However, statistics often show that class background predicts success more than raw intelligence. This suggests <strong>Meritocracy</strong> (rule by merit) might be a myth.</p>
+
+            <h3>Teacher Labeling (The Self-Fulfilling Prophecy)</h3>
+            <p>Sociologist Howard Becker found that teachers often judge students not on ability, but on how closely they fit the image of the "Ideal Pupil" (typically middle-class, quiet, tidy).</p>
+
+            <ul>
+                <li><strong>Step 1:</strong> Teacher labels student as "troublemaker."</li>
+                <li><strong>Step 2:</strong> Teacher treats student with suspicion.</li>
+                <li><strong>Step 3:</strong> Student internalizes the label and acts out.</li>
+                <li><strong>Step 4:</strong> Failure confirms the teacher's original belief.</li>
+            </ul>
+
+            <div class="reflection-box">
+                <strong>Case Study: Paul Willis - "Learning to Labour"</strong><br>
+                Willis studied a group of working-class "lads" who rejected school values. They saw through the meritocracy myth, realizing they were destined for manual labor, so they chose to have "a laugh" instead of studying.
+            </div>
+        </div>
+
+        <div class="page" id="page6">
+            <h2>4. State Ideology & Power</h2>
+
+            <h3>Althusser: The Ideological State Apparatus</h3>
+            <p>Louis Althusser (1971) argued the state has two ways to keep control:</p>
+            <ol>
+                <li><strong>Repressive State Apparatus (RSA):</strong> Police, Army (Force).</li>
+                <li><strong>Ideological State Apparatus (ISA):</strong> Religion, Media, <em>Education</em> (Mind Control).</li>
+            </ol>
+            <p>Education is the most powerful ISA because it influences virtually every child for years, ensuring they accept the political system without question.</p>
+
+            <h3>Globalization & PISA</h3>
+            <p>In the modern world, state ideology has shifted towards <strong>Neoliberalism</strong>—treating schools like businesses. Governments obsess over PISA rankings (international test comparisons), often narrowing the curriculum to Math and Science to compete globally, while cutting Arts and Humanities.</p>
+
+            <div class="concept-box">
+                "History classes are often used to build a sense of national identity, sometimes glossing over the darker parts of a nation's past."
+            </div>
+        </div>
+
+        <div class="page" id="page_quiz">
+            <h2>Knowledge Check</h2>
+            <p>Test your understanding of the four sociological perspectives.</p>
+
+            <div class="quiz-container" id="q1">
+                <h3>1. Which sociologist discussed the "Correspondence Principle"?</h3>
+                <button class="quiz-option" onclick="checkAnswer(this, 'correct', 'q1')">Bowles & Gintis</button>
+                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q1')">Émile Durkheim</button>
+                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q1')">Talcott Parsons</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <div class="quiz-container" id="q2">
+                <h3>2. What is "Cultural Capital"?</h3>
+                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q2')">Money used to build schools.</button>
+                <button class="quiz-option" onclick="checkAnswer(this, 'correct', 'q2')">Knowledge/tastes that give social advantage.</button>
+                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q2')">The capital city of a country.</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <div class="quiz-container" id="q3">
+                <h3>3. According to Becker, how does "Labeling" affect students?</h3>
+                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q3')">It motivates them to prove teachers wrong.</button>
+                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q3')">It has no effect on grades.</button>
+                <button class="quiz-option" onclick="checkAnswer(this, 'correct', 'q3')">It creates a Self-Fulfilling Prophecy.</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <div class="quiz-container" id="q4">
+                <h3>4. What does Althusser call the education system?</h3>
+                <button class="quiz-option" onclick="checkAnswer(this, 'correct', 'q4')">Ideological State Apparatus (ISA)</button>
+                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q4')">Repressive State Apparatus (RSA)</button>
+                <button class="quiz-option" onclick="checkAnswer(this, 'wrong', 'q4')">The Hidden Curriculum</button>
+                <div class="quiz-feedback"></div>
+            </div>
+        </div>
+
+        <div class="page" id="page_reflection">
+            <h2>Personal Reflection</h2>
+
+            <div class="concept-box">
+                "Education is not neutral. You are learning to 'see' education through a critical sociological lens."
+            </div>
+
+            <h3>Which perspective do you align with?</h3>
+            <p>Having reviewed the materials, consider the following:</p>
+
+            <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                <p><strong>Do you agree with Functionalism?</strong><br>
+                    <em>"Schools are fair ladders. If I work hard, I will climb."</em>
+                </p>
+                <hr style="border: 0; border-top: 1px solid #eee;">
+                <p><strong>Do you agree with Conflict Theory?</strong><br>
+                    <em>"Schools are rigged games. The ladder is broken for the poor."</em>
+                </p>
+            </div>
+
+            <h3>Final Task</h3>
+            <p>Use the <strong>"Notes"</strong> feature (top right) to write a summary of how your view of school has changed after reading this e-book. You can then download it as a text file.</p>
+
+            <div class="reflection-box" style="background: #e0f2f1; border-left-color: #009688;">
+                <strong>Thank You!</strong><br>
+                You have completed the module on Sociological Perspectives in Education.
+            </div>
+
+            <div style="text-align: center; margin-top: 40px; opacity: 0.6;">
+                <p>Designed by Amal Ajwad | 2025</p>
+            </div>
+        </div>
+
+        <div class="nav-controls">
+            <button id="prevBtn" onclick="changePage(-1)" disabled>Previous</button>
+            <span class="page-number">Page <span id="pageNum">1</span> of 8</span>
+            <button id="nextBtn" onclick="changePage(1)">Next</button>
+        </div>
+    </div>
+    <div class="modal-overlay" id="glossaryModal">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <h2 style="margin-top:0;">Sociological Glossary</h2>
+
+            <div class="glossary-item">
+                <div class="glossary-term">Hidden Curriculum</div>
+                <div>The unwritten, unofficial, and often unintended lessons, values, and perspectives that students learn in school (e.g., how to interact with peers, obedience).</div>
+            </div>
+
+            <div class="glossary-item">
+                <div class="glossary-term">Meritocracy</div>
+                <div>A social system where people's success and status depend primarily on their talents, abilities, and effort, rather than their wealth or class.</div>
+            </div>
+
+            <div class="glossary-item">
+                <div class="glossary-term">Social Control</div>
+                <div>The study of the mechanisms, in the form of patterns of pressure, through which society maintains social order and cohesion.</div>
+            </div>
+
+            <div class="glossary-item">
+                <div class="glossary-term">Ideological State Apparatus</div>
+                <div>A term by Louis Althusser denoting institutions such as education, the churches, family, media, etc., which serve to transmit the values of the state.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notes-sidebar" id="notesSidebar">
+        <div class="notes-header">
+            <span>Study Notes</span>
+            <span style="cursor:pointer" onclick="toggleNotes()">✕</span>
+        </div>
+        <div class="notes-body">
+            <p style="font-size:0.9em; margin-top:0; color:#888;">Notes for current page:</p>
+            <textarea class="notes-area" id="noteInput" placeholder="Type your analysis here..."></textarea>
+        </div>
+        <div class="notes-footer">
+            <button class="btn-small" onclick="saveNote()">Save</button>
+            <button class="btn-small" onclick="downloadNotes()" style="background:#555;">Export .txt</button>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">Note Saved!</div>
+
+    <script>
+        // --- CONFIGURATION ---
+        let currentPage = 1;
+        const totalPages = 8;
+        const notesStorage = JSON.parse(localStorage.getItem('socio_ebook_notes')) || {};
+        let currentFontScale = 1.0;
+
+        // Fixed ID Mapping
+        function getPageId(num) {
+            if (num === 1) return 'page1'; // Cover
+            if (num === 2) return 'page2'; // Intro
+            if (num === 3) return 'page3'; // Control
+            if (num === 4) return 'page4'; // Culture
+            if (num === 5) return 'page5'; // Strata
+            if (num === 6) return 'page6'; // State
+            if (num === 7) return 'page_quiz'; // Quiz
+            if (num === 8) return 'page_reflection'; // Reflection (Renamed for clarity)
+        }
+
+        // --- CORE NAVIGATION ---
+        function changePage(direction) {
+            if (document.getElementById('notesSidebar').classList.contains('open')) saveNote();
+
+            // Boundary Checks
+            const next = currentPage + direction;
+            if (next < 1 || next > totalPages) return;
+
+            currentPage = next;
+            updateView();
+            window.scrollTo(0, 0); // Scroll to top on page change
+        }
+
+        function jumpToPage(num) {
+            if (document.getElementById('notesSidebar').classList.contains('open')) saveNote();
+            currentPage = num;
+            toggleOverview();
+            updateView();
+            window.scrollTo(0, 0);
+        }
+
+        function updateView() {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(p => p.classList.remove('active'));
+
+            // Show Current
+            const newId = getPageId(currentPage);
+            const activeEl = document.getElementById(newId);
+            if (activeEl) {
+                activeEl.classList.add('active');
+            } else {
+                console.error("Missing Page ID:", newId); // Debugging aid
             }
 
-            // --- CORE NAVIGATION ---
-            function changePage(direction) {
-                if (document.getElementById('notesSidebar').classList.contains('open')) saveNote();
+            // Update UI
+            document.getElementById('pageNum').innerText = currentPage;
+            const percentage = (currentPage / totalPages) * 100;
+            document.getElementById('progressBar').style.width = `${percentage}%`;
 
-                // Boundary Checks
-                const next = currentPage + direction;
-                if (next < 1 || next > totalPages) return;
+            document.getElementById('prevBtn').disabled = (currentPage === 1);
+            const nextBtn = document.getElementById('nextBtn');
+            nextBtn.disabled = (currentPage === totalPages);
+            nextBtn.innerText = (currentPage === totalPages) ? "Finish" : "Next";
 
-                currentPage = next;
-                updateView();
-                window.scrollTo(0, 0); // Scroll to top on page change
-            }
+            loadNote();
+        }
 
-            function jumpToPage(num) {
-                if (document.getElementById('notesSidebar').classList.contains('open')) saveNote();
-                currentPage = num;
-                toggleOverview();
-                updateView();
-                window.scrollTo(0, 0);
-            }
+        // --- QUIZ LOGIC (Enhanced) ---
+        function checkAnswer(btn, status, qId) {
+            const container = document.getElementById(qId);
+            const feedback = container.querySelector('.quiz-feedback');
+            const options = container.querySelectorAll('.quiz-option');
 
-            function updateView() {
-                // Hide all pages
-                const pages = document.querySelectorAll('.page');
-                pages.forEach(p => p.classList.remove('active'));
-
-                // Show Current
-                const newId = getPageId(currentPage);
-                const activeEl = document.getElementById(newId);
-                if (activeEl) {
-                    activeEl.classList.add('active');
-                } else {
-                    console.error("Missing Page ID:", newId); // Debugging aid
+            // Lock options
+            options.forEach(opt => {
+                opt.disabled = true;
+                opt.style.cursor = 'default';
+                // Highlight the correct answer even if they picked wrong
+                if (opt.getAttribute('onclick').includes("'correct'")) {
+                    opt.style.border = "2px solid #28a745";
+                    opt.style.background = "#d4edda";
+                    opt.style.color = "#155724";
                 }
+            });
 
-                // Update UI
-                document.getElementById('pageNum').innerText = currentPage;
-                const percentage = (currentPage / totalPages) * 100;
-                document.getElementById('progressBar').style.width = `${percentage}%`;
-
-                document.getElementById('prevBtn').disabled = (currentPage === 1);
-                const nextBtn = document.getElementById('nextBtn');
-                nextBtn.disabled = (currentPage === totalPages);
-                nextBtn.innerText = (currentPage === totalPages) ? "Finish" : "Next";
-
-                loadNote();
+            if (status === 'wrong') {
+                btn.style.background = "#f8d7da";
+                btn.style.borderColor = "#dc3545";
+                btn.style.color = "#721c24";
             }
 
-            // --- QUIZ LOGIC (Enhanced) ---
-            function checkAnswer(btn, status, qId) {
-                const container = document.getElementById(qId);
-                const feedback = container.querySelector('.quiz-feedback');
-                const options = container.querySelectorAll('.quiz-option');
+            feedback.style.display = 'block';
+            feedback.innerHTML = (status === 'correct') ?
+                "<strong>✅ Correct!</strong> Well done." :
+                "<strong>❌ Incorrect.</strong> Review the theory box above.";
 
-                // Lock options
-                options.forEach(opt => {
-                    opt.disabled = true;
-                    opt.style.cursor = 'default';
-                    // Highlight the correct answer even if they picked wrong
-                    if (opt.getAttribute('onclick').includes("'correct'")) {
-                        opt.style.border = "2px solid #28a745";
-                        opt.style.background = "#d4edda";
-                        opt.style.color = "#155724";
-                    }
-                });
+            feedback.style.marginTop = "15px";
+            feedback.style.padding = "10px";
+            feedback.style.borderRadius = "5px";
+            feedback.style.background = (status === 'correct') ? "rgba(40, 167, 69, 0.1)" : "rgba(220, 53, 69, 0.1)";
+        }
 
-                if (status === 'wrong') {
-                    btn.style.background = "#f8d7da";
-                    btn.style.borderColor = "#dc3545";
-                    btn.style.color = "#721c24";
+        // --- UTILS ---
+        function toggleOverview() {
+            document.getElementById('gridOverlay').classList.toggle('show');
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        function openModal() {
+            document.getElementById('glossaryModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('glossaryModal').style.display = 'none';
+        }
+
+        function adjustFont(dir) {
+            // Increment or decrement by 0.1 (10%)
+            currentFontScale += (dir * 0.1);
+
+            // Set sensible limits (0.7x to 1.5x size)
+            if (currentFontScale < 0.7) currentFontScale = 0.7;
+            if (currentFontScale > 1.5) currentFontScale = 1.5;
+
+            // Apply directly to the page content wrapper
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.style.fontSize = `${currentFontScale}em`;
+            });
+        }
+
+        // --- NOTES SYSTEM ---
+        function toggleNotes() {
+            document.getElementById('notesSidebar').classList.toggle('open');
+            loadNote();
+        }
+
+        function saveNote() {
+            const text = document.getElementById('noteInput').value;
+            notesStorage[getPageId(currentPage)] = text;
+            localStorage.setItem('socio_ebook_notes', JSON.stringify(notesStorage));
+            showToast("Note Saved!");
+        }
+
+        function loadNote() {
+            const saved = notesStorage[getPageId(currentPage)] || "";
+            document.getElementById('noteInput').value = saved;
+        }
+
+        function downloadNotes() {
+            let content = "MY SOCIOLOGY NOTES\n==================\n\n";
+            for (let i = 1; i <= totalPages; i++) {
+                const pid = getPageId(i);
+                if (notesStorage[pid]) {
+                    content += `[Page ${i}]: ${notesStorage[pid]}\n------------------\n`;
                 }
-
-                feedback.style.display = 'block';
-                feedback.innerHTML = (status === 'correct') ?
-                    "<strong>✅ Correct!</strong> Well done." :
-                    "<strong>❌ Incorrect.</strong> Review the theory box above.";
-
-                feedback.style.marginTop = "15px";
-                feedback.style.padding = "10px";
-                feedback.style.borderRadius = "5px";
-                feedback.style.background = (status === 'correct') ? "rgba(40, 167, 69, 0.1)" : "rgba(220, 53, 69, 0.1)";
             }
+            const blob = new Blob([content], {
+                type: 'text/plain'
+            });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'Sociology_Notes.txt';
+            a.click();
+        }
 
-            // --- UTILS ---
-            function toggleOverview() {
-                document.getElementById('gridOverlay').classList.toggle('show');
-            }
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
 
-            function toggleTheme() {
-                document.body.classList.toggle('dark-mode');
-            }
-
-            function openModal() {
-                document.getElementById('glossaryModal').style.display = 'flex';
-            }
-
-            function closeModal() {
-                document.getElementById('glossaryModal').style.display = 'none';
-            }
-
-            function adjustFont(dir) {
-                // Increment or decrement by 0.1 (10%)
-                currentFontScale += (dir * 0.1);
-
-                // Set sensible limits (0.7x to 1.5x size)
-                if (currentFontScale < 0.7) currentFontScale = 0.7;
-                if (currentFontScale > 1.5) currentFontScale = 1.5;
-
-                // Apply directly to the page content wrapper
-                const pages = document.querySelectorAll('.page');
-                pages.forEach(page => {
-                    page.style.fontSize = `${currentFontScale}em`;
-                });
-            }
-
-            // --- NOTES SYSTEM ---
-            function toggleNotes() {
-                document.getElementById('notesSidebar').classList.toggle('open');
-                loadNote();
-            }
-
-            function saveNote() {
-                const text = document.getElementById('noteInput').value;
-                notesStorage[getPageId(currentPage)] = text;
-                localStorage.setItem('socio_ebook_notes', JSON.stringify(notesStorage));
-                showToast("Note Saved!");
-            }
-
-            function loadNote() {
-                const saved = notesStorage[getPageId(currentPage)] || "";
-                document.getElementById('noteInput').value = saved;
-            }
-
-            function downloadNotes() {
-                let content = "MY SOCIOLOGY NOTES\n==================\n\n";
-                for (let i = 1; i <= totalPages; i++) {
-                    const pid = getPageId(i);
-                    if (notesStorage[pid]) {
-                        content += `[Page ${i}]: ${notesStorage[pid]}\n------------------\n`;
-                    }
-                }
-                const blob = new Blob([content], {
-                    type: 'text/plain'
-                });
-                const a = document.createElement('a');
-                a.href = URL.createObjectURL(blob);
-                a.download = 'Sociology_Notes.txt';
-                a.click();
-            }
-
-            function showToast(msg) {
-                const toast = document.getElementById('toast');
-                toast.innerText = msg;
-                toast.classList.add('show');
-                setTimeout(() => toast.classList.remove('show'), 2000);
-            }
-
-            // Close modal on outside click
-            window.onclick = function(e) {
-                if (e.target == document.getElementById('glossaryModal')) closeModal();
-            }
-        </script>
+        // Close modal on outside click
+        window.onclick = function(e) {
+            if (e.target == document.getElementById('glossaryModal')) closeModal();
+        }
+    </script>
 
 </body>
 
