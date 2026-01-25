@@ -32,21 +32,32 @@
         }
 
         .ebook-container {
-            width: 90vw;
-            max-width: 1000px;
+            width: 95vw;
+            /* Occupy 95% of the screen width */
+            max-width: 98%;
+            /* Remove the 1000px limit that was making it narrow */
             min-height: 85vh;
+            /* Keeps it substantial but flexible */
             height: auto;
+            /* Allow it to grow long so you can scroll naturally */
+
             background: var(--glass-bg);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border: var(--glass-border);
             box-shadow: var(--shadow);
             border-radius: 20px;
-            overflow: hidden;
+            overflow: visible;
+            /* Allow scrolling */
             position: relative;
             display: flex;
             flex-direction: column;
             transition: all 0.3s ease;
+
+            /* Decoration */
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.1),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.4);
         }
 
         /* Progress Bar */
@@ -1320,7 +1331,7 @@
         let currentPage = 1;
         const totalPages = 8;
         const notesStorage = JSON.parse(localStorage.getItem('socio_ebook_notes')) || {};
-        let fontSizeLevel = 0;
+        let currentFontScale = 1.0;
 
         // Fixed ID Mapping
         function getPageId(num) {
@@ -1435,10 +1446,18 @@
         }
 
         function adjustFont(dir) {
-            fontSizeLevel += dir;
-            document.body.classList.remove('font-small', 'font-large');
-            if (fontSizeLevel > 0) document.body.classList.add('font-large');
-            if (fontSizeLevel < 0) document.body.classList.add('font-small');
+            // Increment or decrement by 0.1 (10%)
+            currentFontScale += (dir * 0.1);
+
+            // Set sensible limits (0.7x to 1.5x size)
+            if (currentFontScale < 0.7) currentFontScale = 0.7;
+            if (currentFontScale > 1.5) currentFontScale = 1.5;
+
+            // Apply directly to the page content wrapper
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.style.fontSize = `${currentFontScale}em`;
+            });
         }
 
         // --- NOTES SYSTEM ---
